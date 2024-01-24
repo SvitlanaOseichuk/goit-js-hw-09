@@ -70,8 +70,8 @@ const images = [
    ];
 
 
-   const gallery = new SimpleLightbox('.gallery a', { /* options */ });
-// const gallery = document.querySelector(".gallery"); 
+  //  const gallery = new SimpleLightbox('.gallery a', { /* options */ });
+const gallery = document.querySelector(".gallery"); 
 
 
 gallery.innerHTML = createMarkup(images)
@@ -92,35 +92,9 @@ function createMarkup(images){
 .join ("")
 }
 
+const lightbox = new SimpleLightbox('.gallery a', { /* options */ });
 
-// gallery.addEventListener("click", handleImageClick); 
-
-// function handleImageClick(event) {
-//   if (event.target === event.currentTarget) {
-//     return;
-//   }
-
-//   event.preventDefault();
-
-//   const originalImageSrc =  event.target.dataset.source;
-//   const description =  event.target.alt;
- 
-// const instance = basicLightbox.create(`
-//   <div class = "modal">
-//     <img class = "divImages"
-//       src="${originalImageSrc}"
-//       alt="${description}"
-//   />
-//   </div>
-// `);
-// instance.show();
-
-// function closeOnEscape(event) {
-//   if (event.key === 'Escape' && instance.visible()) {
-//     instance.close();
-//     document.removeEventListener("keydown", closeOnEscape);
-//   }
-// };
-
-//  document.addEventListener("keydown", closeOnEscape);
-// }
+lightbox.on('shown.simplelightbox', function () {
+  const currentImage = lightbox.currentItem();
+  const altText = currentImage.querySelector('img').getAttribute('alt');
+});
