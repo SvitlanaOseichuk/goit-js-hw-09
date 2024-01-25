@@ -70,15 +70,15 @@ const images = [
    ];
 
 
-  //  const gallery = new SimpleLightbox('.gallery a', { /* options */ });
 const gallery = document.querySelector(".gallery"); 
 
 
-gallery.innerHTML = createMarkup(images)
+gallery.innerHTML = createMarkup(images);
+
 
 function createMarkup(images){
-  return images.map(({preview, original, description}) => `
-  <li class="gallery-item">
+  return images.map(({preview, original, description}) => 
+  `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
     <img
       class="gallery-image"
@@ -87,14 +87,15 @@ function createMarkup(images){
       alt="${description}"
     />
   </a>
-</li>`
-)
+  </li>`
+  )
 .join ("")
 }
 
-const lightbox = new SimpleLightbox('.gallery a', { /* options */ });
-
-lightbox.on('shown.simplelightbox', function () {
-  const currentImage = lightbox.currentItem();
-  const altText = currentImage.querySelector('img').getAttribute('alt');
+const lightbox = new SimpleLightbox(".gallery a", {  
+  captionsData: "alt", 
+    captionsDelayTime: 250,
 });
+
+lightbox.on("shown.simplelightbox", function () {})
+

@@ -19,3 +19,27 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.gallery {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1440px;
+  gap: 24px;
+}
+
+.gallery-image{
+  width: 360px;
+  height: 200px;
+ 
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+transform: scale(1.02);
+}
