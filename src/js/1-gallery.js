@@ -75,7 +75,6 @@ const gallery = document.querySelector(".gallery");
 
 gallery.innerHTML = createMarkup(images);
 
-
 function createMarkup(images){
   return images.map(({preview, original, description}) => 
   `<li class="gallery-item">
@@ -83,7 +82,6 @@ function createMarkup(images){
     <img
       class="gallery-image"
       src="${preview}"
-      data-source="${original}"
       alt="${description}"
     />
   </a>
@@ -94,8 +92,6 @@ function createMarkup(images){
 
 const lightbox = new SimpleLightbox(".gallery a", {  
   captionsData: "alt", 
-    captionsDelayTime: 250,
+  captionDelay: 250,
 });
-
-lightbox.on("shown.simplelightbox", function () {})
 

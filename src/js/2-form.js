@@ -3,7 +3,6 @@ const form = document.querySelector(".feedback-form");
 const emailInput = form.querySelector("input");
 const messageTextarea = form.querySelector("textarea");
 
-populateTextarea()  //отримуємо дані ЗІ сховища які були внесені до того
 
 form.addEventListener("input", onFormInput);
 form.addEventListener("submit", onFormSubmit);
@@ -12,7 +11,7 @@ form.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event){
     event.preventDefault();
     
-    if (emailInput.value.trim() !== "" && messageTextarea.value.trim() !== "") {
+    if (emailInput.value !== "" && messageTextarea.value !== "") {
     const formData = {
       email: emailInput.value,
       message: messageTextarea.value
@@ -21,21 +20,24 @@ function onFormSubmit(event){
 
     localStorage.removeItem(STORAGE_KEY);
     event.currentTarget.reset();
+  } else {
+    alert("All fields must be filled \n (Усі поля повинні бути заповнені)");
   }
 }
 
 
 function onFormInput() {
   const formState = {
-    email: emailInput.value,
-    message: messageTextarea.value
+    email: emailInput.value.trim(),
+    message: messageTextarea.value.trim()
   };
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formState));
 }
 
-function populateTextarea(){
-  const savedMessage = localStorage.getItem(STORAGE_KEY)
+
+function populateFormFields(){
+  const savedMessage = localStorage.getItem(STORAGE_KEY);
 
   if(savedMessage){
     const { email, message } = JSON.parse(savedMessage);
@@ -44,28 +46,4 @@ function populateTextarea(){
   };
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+populateFormFields();
